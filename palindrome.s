@@ -4,6 +4,8 @@
 #		v0		- system parameter and return value
 #		a0		- system parameter --strings to print
 #		t0		-	used to hold value of reverse
+#		t1		- used to hold value of num
+#
 .data
 fir_msg: .asciiz		"Programming assignment 1 for CDA3101\n"
 
@@ -18,8 +20,9 @@ NotPalindrome_msg: .asciiz		"is not a palindrome number.\n"
 
 		.text
 main:
-		li		$t0, 0			#load 0 into $t0 reverse
+		li		$t0,	0			#load 0 into $t0 reverse
 
+		##print the welcome message
 		la		$a0,	fir_msg
 		li		$v0,	4
 		syscall
@@ -27,11 +30,19 @@ main:
 		la		$a0,	sec_msg
 		li		$v0,	4
 		syscall
-
+		
+		##print the read_int message
 		la		$a0, input_msg
 		li		$v0,	4
 		syscall
 
 		li		$v0, 5			#load system read_int call into v5
 		syscall						#make the system call
-		move	$t1, $v0		#move the number read
+		move	$t1,	$v0		#move the number read, store num
+		move	$t2,	$t1		#temp = num
+
+while_loop:
+		beq		$t2,	0,	endloop		#if temp = 0, end of loop
+		mul		$t1,	10		#otherwise,
+
+endloop:
