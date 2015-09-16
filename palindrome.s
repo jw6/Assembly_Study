@@ -20,17 +20,17 @@ NotPalindrome_msg: .asciiz		"is not a palindrome number.\n"
 main:
 		li		$t0, 0			#load 0 into $t0 reverse
 
-		la		$a0, fir_msg
-		li		4
+		la		$a0,	fir_msg
+		li		$v0,	4
 		syscall
 
-		la		$a0, sec_msg
-		li		4
+		la		$a0,	sec_msg
+		li		$v0,	4
 		syscall
 
 		la		$a0, input_msg
-		li		4
-		syscall 
+		li		$v0,	4
+		syscall
 
 		li		$v0, 5			#load system read_int call into v5
 		syscall						#make the system call
