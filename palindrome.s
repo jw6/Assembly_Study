@@ -48,9 +48,9 @@ main:
 while_loop:
 		blez	$t2,	endloop			#check if temp equals 0
 
-		mult	$t0,	$t8	#reverse multply by 10
+		mult	$t0,	$t8		#reverse multply by 10
 		mflo	$t3					#temp value to hold result
-		move	$t0,	$t0		#move the value into reverse
+		move	$t0,	$t3		#move the value into reverse
 
 		div		$t2,	$t8		#temp divided by 10
 		mfhi	$t3					#temp value to hold remainder temp % 10
