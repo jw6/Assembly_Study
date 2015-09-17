@@ -14,9 +14,9 @@ sec_msg: .asciiz		"This palindrome checker only deals with positive integer numb
 
 input_msg: .asciiz		"Enter a number to check if it is a palindrome or not.\n"
 
-Is_Pal_msg: .asciiz		"is a palindrome number.\n"
+Is_Pal_msg: .asciiz		"\t is a palindrome number.\n"
 
-Not_Pal_msg: .asciiz		"is not a palindrome number.\n"
+Not_Pal_msg: .asciiz		"\t is not a palindrome number.\n"
 
 
 		.text
@@ -61,12 +61,12 @@ while_loop:
 		b		while_loop
 
 endloop:
-		beq		$t1,	$t2,	Is_Pal
-		bne		$t1,	$t2,	Not_Pal
+		beq		$t1,	$t0,	Is_Pal
+		bne		$t1,	$t0,	Not_Pal
 
 
 Is_Pal:
-		la		$a0,	$t0
+		move 	$a0, $t1
 		li		$v0,	1
 		syscall
 
@@ -77,12 +77,12 @@ Is_Pal:
 		j		Exit
 
 Not_Pal:
-		la		$a0,	$t0
+		move $a0,	$t1
 		li		$v0,	1
 		syscall
 
 		la		$a0,	Not_Pal_msg
-		li		$v0,	1
+		li		$v0,	4
 		syscall
 
 		j		Exit
