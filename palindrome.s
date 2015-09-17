@@ -1,4 +1,7 @@
 #Jiaying Wang -- 09/15/15
+#This is the first homework assignment for CDA3101
+#This code is also on my Github
+#https://github.com/jw6/MIPS/blob/master/palindrome.s
 #palindrome.s -- A MIPS palindrome integer checker
 #Registers used:
 #		v0		- system parameter and return value
@@ -6,6 +9,7 @@
 #		t0		-	used to hold value of reverse
 #		t1		- used to hold value of num
 #		t2		- used to hold value of temp
+#		t3		- Temparare register
 
 .data
 fir_msg: .asciiz		"Programming assignment 1 for CDA3101\n"
@@ -61,27 +65,27 @@ while_loop:
 		b		while_loop
 
 endloop:
-		beq		$t1,	$t0,	Is_Pal
-		bne		$t1,	$t0,	Not_Pal
+		beq		$t1,	$t0,	Is_Pal		#If reverse == num, jump to Is_Pal
+		bne		$t1,	$t0,	Not_Pal		#If reverse != num, jump to Not_Pal
 
 
 Is_Pal:
-		move 	$a0, $t1
-		li		$v0,	1
-		syscall
+		move 	$a0, $t1	#move num into a0
+		li		$v0,	1		#copy the value of num into v0
+		syscall					#system call
 
-		la		$a0,	Is_Pal_msg
+		la		$a0,	Is_Pal_msg		#print the message
 		li		$v0,	4
 		syscall
 
 		j		Exit
 
 Not_Pal:
-		move $a0,	$t1
-		li		$v0,	1
-		syscall
+		move $a0,	$t1		#move num into a0
+		li		$v0,	1		#copy the value of num into v0
+		syscall					#system call
 
-		la		$a0,	Not_Pal_msg
+		la		$a0,	Not_Pal_msg		#print the message
 		li		$v0,	4
 		syscall
 
