@@ -14,9 +14,6 @@
 
 .data
 
-A: .word 0
-B: .word 0
-
 message1: .asciiz "Enter first integer n1: "
 message2: .asciiz "Enter second integer n2: "
 
