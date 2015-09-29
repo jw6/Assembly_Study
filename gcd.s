@@ -46,15 +46,13 @@ main:
     move $s1, $a2          #save the original value of n2
 
 gcd:
-    sub $sp, $sp, 12  #allocate 3 words in stack
-    sw $ra, 0($sp)    #save return adress
-    sw $a1, 4($sp)    #save arg 1
-    sw $a2, 8($sp)    #save arg 2
+    sub $sp, $sp, 8   #allocate 2 words in stack
+    sw $a1, 0($sp)    #save arg 1
+    sw $a2, 4($sp)    #save arg 2
     bnez $a2, else    #if a2 != 0, jump to else
-    lw $ra, 0($sp)    #restore return address
-    lw $a1, 4($sp)    #restore arg 1
-    lw $a2, 8($sp)    #restore arg 2
-    addiu $sp, $sp, 12  #pop 3 words off stack
+    lw $a1, 0($sp)    #restore arg 1
+    lw $a2, 4($sp)    #restore arg 2
+    addiu $sp, $sp, 8  #pop 2 words off stack
     jal end_of_gcd    #execute display function
 
 else:
